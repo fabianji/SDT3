@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package starwars;
+
+option go_package = "example.com/go-starwars-grpc;go_starwars_grpc";
+
+service StarWars {
+    rpc CityMgmtBroker (NewCity) returns (RespBroker1) {}
+    rpc CityLeiaBroker (NewCity) returns (RespBroker2) {}
+}
+
+message NewCity {
+    string nombre_planeta = 1;
+    string nombre_ciudad = 2;
+    string action = 3;
+    optional string nuevo_valor = 4;
+    string sender = 5;
+}
+
+message RespBroker1 {
+    string direccion_servidor = 1;
+}
+
+message RespBroker2 {
+    int32 cant_rebeldes = 1;
+    repeated int32 reloj_vector = 2;
+    string servidor_contactado = 3;
+}
